@@ -1,0 +1,17 @@
+language: python
+python:
+  - "3.5"
+services:
+  - docker
+
+install: "pip install -r requirements_testing.txt"
+
+script: behave tests/features
+
+after_success:
+    - echo "Building and pushing docker image after successful test!"
+    - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+    - docker build -t karunamon/concourse-resource-bitbucket .
+    - docker push karunamon/concourse-resource-bitbucket
+
+
