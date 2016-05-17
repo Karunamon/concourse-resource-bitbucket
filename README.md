@@ -1,9 +1,11 @@
 # concourse-resource-bitbucket
 [![Docker Pulls](https://img.shields.io/docker/pulls/karunamon/concourse-resource-bitbucket.svg?maxAge=2592000)](https://hub.docker.com/r/karunamon/concourse-resource-bitbucket/)
 [![Requirements Status](https://requires.io/github/Karunamon/concourse-resource-bitbucket/requirements.svg?branch=master)](https://requires.io/github/Karunamon/concourse-resource-bitbucket/requirements/?branch=master)
+[![Build Status](https://travis-ci.org/Karunamon/concourse-resource-bitbucket.svg?branch=master)](https://travis-ci.org/Karunamon/concourse-resource-bitbucket)
 
 A [Concourse](http://concourse.ci/) [resource](http://concourse.ci/resources.html) to interact with the build status API of [Atlassian BitBucket](https://www.atlassian.com/software/bitbucket) instances, either the public instance at bitbucket.com, or a hosted instance on your own network.
 
+This repo is tied to the [associated Docker image](https://hub.docker.com/r/karunamon/concourse-resource-bitbucket/) on Docker Hub, built from the master branch. The image is only rebuilt once the tests complete successfully, so you can be confident that the image you use on your Concourse has been tested and working successfully.
 
 ## Resource Configuration
 
