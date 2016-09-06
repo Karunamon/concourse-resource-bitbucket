@@ -30,7 +30,7 @@ def json_pp(json_object):
 
 
 def parse_stdin():
-    json.loads(sys.stdin.read())
+    return json.loads(sys.stdin.read())
 
 
 def post_result(url, user, password, verify, data, debug):
