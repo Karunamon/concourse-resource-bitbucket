@@ -91,11 +91,11 @@ if 'scripts.bitbucket' != __name__:
         err("Commit: " + str(commit_sha))
 
     key = commit_sha
-    if j['params']['key']:
+    if j['params'].get('key', False):
         key = j['params']['key']
 
     name = os.environ["BUILD_JOB_NAME"]
-    if j['params']['name']:
+    if j['params'].get('name', False):
         name = j['params']['name']
 
     # The build status can only be one of three things
