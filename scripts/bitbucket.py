@@ -63,7 +63,7 @@ if 'scripts.bitbucket' != __name__:
         print('[]')
         sys.exit(0)
     elif 'in' in sys.argv[0]:
-        print('{}')
+        print('{ "version": { ref: "none" } }')
         sys.exit(0)
 
     j = parse_stdin()
@@ -90,7 +90,7 @@ if 'scripts.bitbucket' != __name__:
     if debug:
         err("Commit: " + str(commit_sha))
 
-    key = commit_sha
+    key = os.environ["BUILD_JOB_NAME"]
     if j['params'].get('key', False):
         key = j['params']['key']
 
