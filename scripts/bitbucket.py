@@ -30,7 +30,7 @@ def json_pp(json_object):
 
 
 def parse_stdin():
-    json.loads(sys.stdin.read())
+    return json.loads(sys.stdin.read())
 
 
 def post_result(url, user, password, verify, data, debug):
@@ -129,7 +129,7 @@ if 'scripts.bitbucket' != __name__:
     if debug:
         err(json_pp(js))
 
-    r = post_result(post_url, username, password, verify_ssl, js)
+    r = post_result(post_url, username, password, verify_ssl, js, debug)
     if r.status_code != 204:
         sys.exit(1)
 
