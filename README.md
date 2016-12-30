@@ -34,10 +34,15 @@ No-op
 
 Update the status of a commit.
 
-Parameters:
+Parameters: *(items in bold are required)*
 
  * **`repo`** - Name of the git repo containing the SHA to be updated. This will come from a previous `get` on a `git` resource. Make sure to use the git directory name, not the name of the resource.
  * **`build_status`** - the state of the status. Must be one of `SUCCESSFUL`, `FAILED`, or `INPROGRESS` - case sensitive.
+ * `build_url_file` - Use the url given in file.
+ * `key` - Use the given key in build notification. If different notifications have the same key, they will stack.
+ * `name` - Use the given name in build notification. This will show up on bitbucket. For example "unit tests", "end to end tests"
+ * `description_file` - A path to a file containing a description of the build. For example: "7 tests have failed"
+
 
 
 ## Example
