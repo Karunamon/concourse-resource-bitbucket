@@ -74,6 +74,7 @@ if 'scripts.bitbucket' != __name__:
     debug = j['source'].get('debug', False)
     username = j['source']['bitbucket_username']
     password = j['source']['bitbucket_password']
+    repository_type = j['source'].get('repository_type', 'git')
 
     build_status = j['params']['build_status']
     artifact_dir = "%s/%s" % (sys.argv[1], j['params']['repo'])
@@ -81,11 +82,19 @@ if 'scripts.bitbucket' != __name__:
     if debug:
         err("--DEBUG MODE--")
 
-    # It is recommended not to parse the .git folder directly due to garbage
-    # collection. It's more sustainable to just install git and parse the output.
-    commit_sha = subprocess.check_output(
-            ['git', '-C', artifact_dir, 'rev-parse', 'HEAD']
-    ).strip()
+    if repository_type == 'git':
+        # It is recommended not to parse the .git folder directly due to garbage
+        # collection. It's more sustainable to just install git and parse the output.
+        commit_sha = subprocess.check_output(
+                ['git', '-C', artifact_dir, 'rev-parse', 'HEAD']
+        ).strip()
+    elif repository_type == 'mercurial':
+        commit_sha = subprocess.check_output(
+                ['hg', 'log', '--cwd', artifact_dir, '--limit', '1', '--rev', '.', '--template', "{node}"]
+        ).strip()
+    else:
+        err("Invalid repository type, must be: git or mercurial")
+        exit(1)
 
     if debug:
         err("Commit: " + str(commit_sha))
