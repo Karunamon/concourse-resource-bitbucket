@@ -110,12 +110,21 @@ if 'scripts.bitbucket' != __name__:
         err("Notifying %s that build %s is in status: %s" %
             (post_url, os.environ["BUILD_NAME"], build_status))
 
-    build_url = "{url}/pipelines/{pipeline}/jobs/{jobname}/builds/{buildname}".format(
-            url=os.environ['ATC_EXTERNAL_URL'],
-            pipeline=os.environ['BUILD_PIPELINE_NAME'],
-            jobname=os.environ['BUILD_JOB_NAME'],
-            buildname=os.environ['BUILD_NAME'],
-    )
+    if 'BUILD_TEAM_NAME' in os.environ:
+        build_url = "{url}/teams/{team}/pipelines/{pipeline}/jobs/{jobname}/builds/{buildname}".format(
+                url=os.environ['ATC_EXTERNAL_URL'],
+                team=os.environ['BUILD_TEAM_NAME'],
+                pipeline=os.environ['BUILD_PIPELINE_NAME'],
+                jobname=os.environ['BUILD_JOB_NAME'],
+                buildname=os.environ['BUILD_NAME'],
+        )
+    else:
+        build_url = "{url}/pipelines/{pipeline}/jobs/{jobname}/builds/{buildname}".format(
+                url=os.environ['ATC_EXTERNAL_URL'],
+                pipeline=os.environ['BUILD_PIPELINE_NAME'],
+                jobname=os.environ['BUILD_JOB_NAME'],
+                buildname=os.environ['BUILD_NAME'],
+        )
 
     # https://developer.atlassian.com/bitbucket/server/docs/latest/how-tos/updating-build-status-for-commits.html
     js = {
