@@ -15,7 +15,6 @@ These items go in the `source` fields of the resource type. Bold items are requi
  * **`bitbucket_password`** - Password for the mentioned user. For Bitbucket Cloud this will need to be an [app password](https://confluence.atlassian.com/bitbucket/app-passwords-828781300.html)
  * `debug` - When True, dump the JSON documents sent and received for troubleshooting. (default: false)
  * `driver` - Are you using Bitbucket Cloud or Bitbucket Server. (default: Bitbucket Server)
- * `repository_type` - The type of the repository, which can be either git or mercurial. (default: git)
  * `verify_ssl` - When False, ignore any HTTPS connection errors if generated. Useful if on an internal network. (default: True)
 
 ### `Bitbucket Cloud` Driver
