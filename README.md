@@ -15,6 +15,7 @@ These items go in the `source` fields of the resource type. Bold items are requi
  * **`bitbucket_user`** - Login username of someone with rights to the repository being updated.
  * **`bitbucket_password`** - Password for the mentioned user
  * `debug` - When True, dump the JSON documents sent and received for troubleshooting. (default: false)
+ * `repository_type` - The type of the repository, which can be either git or mercurial. (default: git)
  * `verify_ssl` - When False, ignore any HTTPS connection errors if generated. Useful if on an internal network. (default: True)
 
 
