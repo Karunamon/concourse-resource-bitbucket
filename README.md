@@ -1,4 +1,14 @@
 # concourse-resource-bitbucket
+
+# UNMAINTAINED
+This resource is no longer maintained due to a lack of time on the part of the author. As of time of writing, it works on local Bitbucket instances, but has not been updated to support newer features in Concourse. In particular, cloud instances of Bitbucket are not functioning correctly.
+
+**Pull requests are not being accepted** due to the fact that any faulty commits would cause active Concourse installs using this resource to stop working, and I do not have the ability to vet them at the moment. There are ~4,000 docker pulls of this particular resource, and it would be irresponsible to introduce code I can't vet into those.
+
+If you would like to take over maintenance of this resource, please contact me at mparks@tkware.info
+
+--
+
 [![Docker Pulls](https://img.shields.io/docker/pulls/karunamon/concourse-resource-bitbucket.svg?maxAge=2592000)](https://hub.docker.com/r/karunamon/concourse-resource-bitbucket/)
 [![Requirements Status](https://requires.io/github/Karunamon/concourse-resource-bitbucket/requirements.svg?branch=master)](https://requires.io/github/Karunamon/concourse-resource-bitbucket/requirements/?branch=master)
 [![Build Status](https://travis-ci.org/Karunamon/concourse-resource-bitbucket.svg?branch=master)](https://travis-ci.org/Karunamon/concourse-resource-bitbucket)
