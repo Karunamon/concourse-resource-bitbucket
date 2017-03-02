@@ -63,7 +63,7 @@ if 'scripts.bitbucket' != __name__:
         print('[]')
         sys.exit(0)
     elif 'in' in sys.argv[0]:
-        print('{}')
+        print('{ "version": { ref: "none" } }')
         sys.exit(0)
 
     j = parse_stdin()
@@ -99,6 +99,14 @@ if 'scripts.bitbucket' != __name__:
     if debug:
         err("Commit: " + str(commit_sha))
 
+    key = os.environ["BUILD_JOB_NAME"]
+    if j['params'].get('key', False):
+        key = j['params']['key']
+
+    name = os.environ["BUILD_JOB_NAME"]
+    if j['params'].get('name', False):
+        name = j['params']['name']
+
     # The build status can only be one of three things
     if 'INPROGRESS' not in build_status and \
                     'SUCCESSFUL' not in build_status and \
@@ -129,8 +137,8 @@ if 'scripts.bitbucket' != __name__:
     # https://developer.atlassian.com/bitbucket/server/docs/latest/how-tos/updating-build-status-for-commits.html
     js = {
         "state": build_status,
-        "key": os.environ["BUILD_JOB_NAME"],
-        "name": os.environ["BUILD_NAME"],
+        "key": key,
+        "name": name,
         "url": build_url,
         "description": "Concourse build %s" % os.environ["BUILD_ID"]
     }
