@@ -12,7 +12,7 @@ This repo is tied to the [associated Docker image](https://hub.docker.com/r/karu
 These items go in the `source` fields of the resource type. Bold items are required:
 
  * **`bitbucket_user`** - Login username of someone with rights to the repository being updated.
- * **`bitbucket_password`** - Password for the mentioned user. For Bitbucket Cloud this will need to be an [app password](https://confluence.atlassian.com/bitbucket/app-passwords-828781300.html)
+ * **`bitbucket_password`** - Password for the mentioned user. For Bitbucket Cloud this will need to be an [app password](https://confluence.atlassian.com/bitbucket/app-passwords-828781300.html) with permission to read from a repository and write to a repository.
  * `debug` - When True, dump the JSON documents sent and received for troubleshooting. (default: false)
  * `driver` - Are you using Bitbucket Cloud or Bitbucket Server. (default: Bitbucket Server)
  * `verify_ssl` - When False, ignore any HTTPS connection errors if generated. Useful if on an internal network. (default: True)
