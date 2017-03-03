@@ -107,8 +107,8 @@ if 'scripts.bitbucket' != __name__:
     if driver == 'Bitbucket Server':
         post_url = j['source']['bitbucket_url'] + 'rest/build-status/1.0/commits/' + commit_sha
     elif driver == 'Bitbucket Cloud':
-        owner = j['source']['owner']
-        repository_name = j['source']['repository_name']
+        owner = j['source'].get('owner', username)
+        repository_name = j['source'].get('repository_name', j['params']['repo'])
         post_url = 'https://api.bitbucket.org/2.0/repositories/' + owner + '/' + repository_name + '/commit/' + commit_sha + '/statuses/build'
     else:
         err("Invalid driver, must be: Bitbucket Server or Bitbucket Cloud")
