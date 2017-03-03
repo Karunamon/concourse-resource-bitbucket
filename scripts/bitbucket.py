@@ -118,21 +118,40 @@ if 'scripts.bitbucket' != __name__:
         err(json_pp(j))
         err("Notifying %s that build %s is in status: %s" %
             (post_url, os.environ["BUILD_NAME"], build_status))
+    if "key" in j["params"]:
+        key = j["params"]["key"]
+    else:
+        key = os.environ["BUILD_JOB_NAME"]
 
-    build_url = "{url}/pipelines/{pipeline}/jobs/{jobname}/builds/{buildname}".format(
-            url=os.environ['ATC_EXTERNAL_URL'],
-            pipeline=os.environ['BUILD_PIPELINE_NAME'],
-            jobname=os.environ['BUILD_JOB_NAME'],
-            buildname=os.environ['BUILD_NAME'],
-    )
+    if "name" in j["params"]:
+        name = j["params"]["name"]
+    else:
+        name = os.environ["BUILD_NAME"]
+
+    if "build_url_file" in j["params"]:
+        with open(os.path.join(sys.argv[1], j["params"]["build_url_file"]), "r") as fp:
+            build_url = fp.readlines()[0]
+    else:
+        build_url = "{url}/pipelines/{pipeline}/jobs/{jobname}/builds/{buildname}".format(
+                url=os.environ['ATC_EXTERNAL_URL'],
+                pipeline=os.environ['BUILD_PIPELINE_NAME'],
+                jobname=os.environ['BUILD_JOB_NAME'],
+                buildname=os.environ['BUILD_NAME'],
+        )
+
+    if "description_file" in j["params"]:
+        with open(os.path.join(sys.argv[1], j["params"]["description_file"]), "r") as fp:
+            description = fp.read()
+    else:
+        description = "Concourse build %s" % os.environ["BUILD_ID"]
 
     # https://developer.atlassian.com/bitbucket/server/docs/latest/how-tos/updating-build-status-for-commits.html
     js = {
         "state": build_status,
-        "key": os.environ["BUILD_JOB_NAME"],
-        "name": os.environ["BUILD_NAME"],
+        "key": key,
+        "name": name,
         "url": build_url,
-        "description": "Concourse build %s" % os.environ["BUILD_ID"]
+        "description": description
     }
 
     if debug:
