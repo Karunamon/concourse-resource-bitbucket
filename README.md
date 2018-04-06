@@ -3,9 +3,13 @@
 # UNMAINTAINED
 This resource is no longer maintained due to a lack of time on the part of the author. As of time of writing, it works on local Bitbucket instances, but has not been updated to support newer features in Concourse. In particular, cloud instances of Bitbucket are not functioning correctly.
 
-**Pull requests are not being accepted** due to the fact that any faulty commits would cause active Concourse installs using this resource to stop working, and I do not have the ability to vet them at the moment. There are ~4,000 docker pulls of this particular resource, and it would be irresponsible to introduce code I can't vet into those.
+**Pull requests are not being accepted on this repo** due to the fact that any faulty commits would cause active Concourse installs using this resource to stop working, and I do not have the ability to vet them at the moment. There are hundreds of thousands of docker pulls of this particular resource, and it would be irresponsible to introduce code I can't vet into those.
 
-If you would like to take over maintenance of this resource, please contact me at mparks@tkware.info
+You should probably use one of these forks instead:
+
+https://github.com/SHyx0rmZ/bitbucket-build-status-resource
+https://github.com/Meshcloud/concourse-resource-bitbucket
+https://github.com/rockotseng/concourse-resource-bitbucket
 
 --
 
