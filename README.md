@@ -5,11 +5,8 @@ This resource is no longer maintained due to a lack of time on the part of the a
 
 **Pull requests are not being accepted on this repo** due to the fact that any faulty commits would cause active Concourse installs using this resource to stop working, and I do not have the ability to vet them at the moment. There are hundreds of thousands of docker pulls of this particular resource, and it would be irresponsible to introduce code I can't vet into those.
 
-You should probably use one of these forks instead:
+You should use one of the many forks of this repo instead. [This one](https://github.com/SHyx0rmZ/bitbucket-build-status-resource) by SHyx0rmZ seems the most fully-featured.
 
-https://github.com/SHyx0rmZ/bitbucket-build-status-resource
-https://github.com/Meshcloud/concourse-resource-bitbucket
-https://github.com/rockotseng/concourse-resource-bitbucket
 
 --
 
